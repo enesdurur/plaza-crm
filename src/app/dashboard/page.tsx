@@ -1,4 +1,16 @@
 "use client";
+type Complaint = {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  createdAt: {
+    toDate: () => Date;
+  };
+  status: string;
+};
+
+
 import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -16,6 +28,7 @@ export default function Dashboard() {
 };
 
 const [complaints, setComplaints] = useState<Complaint[]>([]);
+
 
   useEffect(() => {
     const fetchData = async () => {
