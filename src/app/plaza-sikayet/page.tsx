@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -13,12 +14,12 @@ export default function PlazaSikayetForm() {
     description: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       await addDoc(collection(db, "sikayetler"), {
@@ -61,7 +62,9 @@ export default function PlazaSikayetForm() {
           onChange={handleChange}
           required
         />
-        <Button type="submit" className="w-full">Şikayeti Gönder</Button>
+        <Button type="submit" className="w-full">
+          Şikayeti Gönder
+        </Button>
       </form>
     </div>
   );
