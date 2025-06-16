@@ -6,7 +6,16 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 
 export default function Dashboard() {
-  const [complaints, setComplaints] = useState([]);
+  type Complaint = {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  createdAt: any;
+  status: string;
+};
+
+const [complaints, setComplaints] = useState<Complaint[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
